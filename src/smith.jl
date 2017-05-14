@@ -1,6 +1,6 @@
 module Smith
 
-export create_window, show_window, isclosed
+export create_window, show_window, save_window_framebuffer, isclosed
 export create_chart_2d, create_chart_3d
 export set_chart_axes_limits, set_chart_axes_titles
 export add_plot_to_chart, add_surface_to_chart
@@ -20,6 +20,10 @@ end
 
 function show_window(refwindow::Ref{Forge.fg_window})
     Forge.fg_show_window(refwindow[])
+end
+
+function save_window_framebuffer(refwindow::Ref{Forge.fg_window}, path::String)
+    Forge.fg_save_window_framebuffer(Cstring(pointer(path)), refwindow[])
 end
 
 function isclosed(refwindow::Ref{Forge.fg_window})::Bool

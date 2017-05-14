@@ -28,3 +28,4 @@ end
 update_vertex_buffer(surface, data)
 
 draw_chart(!isclosed, window, chart)
+save_window_framebuffer(window, "surface.png")

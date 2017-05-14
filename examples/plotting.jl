@@ -32,3 +32,4 @@ for (f, color, legend, args) in [
 end
 
 draw_chart(!isclosed, window, chart)
+save_window_framebuffer(window, "plotting.png")
