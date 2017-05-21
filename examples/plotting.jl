@@ -23,13 +23,13 @@ for (f, color, legend, args) in [
         (tan, RGB(1,1,0), "Tangent", (Forge.FG_PLOT_LINE, Forge.FG_MARKER_TRIANGLE))
         (log, RGB(.\(0xff, (0x25, 0x79, 0x73))...), "Log base 10", (Forge.FG_PLOT_LINE, Forge.FG_MARKER_TRIANGLE))
     ]
-    set_chart_axes_limits(chart, FRANGE_START, FRANGE_END, -1, 1)
+    set_axes_limits(chart, FRANGE_START, FRANGE_END, -1, 1)
     data = get_plot_data(FRANGE_START, FRANGE_END, 0.1, f)
-    plot = add_plot_to_chart(chart, length(data)/2, args...)
-    set_plot_color(plot, color)
-    set_plot_legend(plot, legend)
+    plot = create_plot(chart, length(data)/2, args...)
+    set_color(plot, color)
+    set_legend(plot, legend)
     update_vertex_buffer(plot, data)
 end
 
 draw_chart(!isclosed, window, chart)
-save_window_framebuffer(window, "plotting.png")
+save_framebuffer(window, "plotting.png")

@@ -36,7 +36,7 @@ window = create_window(1000, 800, "t-SNE Demo")
 show_window(window)
 
 chart = create_chart_2d()
-set_chart_axes_limits(chart, -70, 70, -80, 80)
+set_axes_limits(chart, -70, 70, -80, 80)
 
 plots = Dict()
 [setindex!(plots, [], n) for n in 0:9]
@@ -51,11 +51,11 @@ colors = distinguishable_colors(10)
 for label in 0:9
     pos = plots[label]
     data = reshape(pos, Int(length(pos)/2), 2)
-    plot = add_plot_to_chart(chart, length(data)/2, Forge.FG_PLOT_SCATTER, Forge.FG_MARKER_CIRCLE)
-    set_plot_color(plot, colors[label+1])
-    set_plot_legend(plot, string(label))
+    plot = create_plot(chart, length(data)/2, Forge.FG_PLOT_SCATTER, Forge.FG_MARKER_CIRCLE)
+    set_color(plot, colors[label+1])
+    set_legend(plot, string(label))
     update_vertex_buffer(plot, data)
 end
 
 draw_chart(!isclosed, window, chart)
-save_window_framebuffer(window, "tsne.png")
+save_framebuffer(window, "tsne.png")

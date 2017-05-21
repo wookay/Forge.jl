@@ -12,10 +12,10 @@ const XSIZE = (XMAX-XMIN)/DX
 const YSIZE = (YMAX-YMIN)/DX
 
 chart = create_chart_3d()
-set_chart_axes_limits(chart, XMIN-2, XMAX+2, YMIN-2, YMAX+2, -0.5, 1)
-set_chart_axes_titles(chart, "x-axis", "y-axis", "z-axis")
+set_axes_limits(chart, XMIN-2, XMAX+2, YMIN-2, YMAX+2, -0.5, 1)
+set_axes_titles(chart, "x-axis", "y-axis", "z-axis")
 
-surface = add_surface_to_chart(chart, XSIZE, YSIZE)
+surface = create_surface(chart, XSIZE, YSIZE)
 
 data = []
 for x in XMIN:DX:XMAX+DX, y in YMIN:DX:YMAX+DX
@@ -28,4 +28,4 @@ end
 update_vertex_buffer(surface, data)
 
 draw_chart(!isclosed, window, chart)
-save_window_framebuffer(window, "surface.png")
+save_framebuffer(window, "surface.png")
