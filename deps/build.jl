@@ -2,7 +2,7 @@ using BinDeps
 
 @BinDeps.setup
 
-forge_version = "0.9.2"
+forge_version = "1.0.1"
 
 libforge = library_dependency("libforge")
 github_root = "https://github.com/arrayfire/forge"
