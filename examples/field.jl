@@ -1,4 +1,4 @@
-using Forge.Smith
+using Forge.DSL
 using Colors
 
 const MINIMUM = 1.0

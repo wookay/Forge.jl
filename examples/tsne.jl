@@ -3,7 +3,7 @@
 # Pkg.add("MNIST")
 # Pkg.add("HDF5")
 
-using Forge.Smith
+using Forge.DSL
 using TSne
 using Colors
 using MNIST

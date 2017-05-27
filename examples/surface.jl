@@ -1,4 +1,4 @@
-using Forge.Smith
+using Forge.DSL
 
 window = create_window(1024, 768, "3d Surface Demo")
 show_window(window)

@@ -2,12 +2,12 @@
 
 📊  Julia wrapper for the [Forge](https://github.com/arrayfire/forge) library
 
-### Forge.Smith
+### Forge.DSL
 
 a DSL for the Forge.
 
 ```julia
-using Forge.Smith
+using Forge.DSL
 
 window = create_window(1024, 768, "3d Surface Demo")
 show_window(window)

@@ -1,4 +1,4 @@
-using Forge.Smith
+using Forge.DSL
 using ColorTypes
 
 window = create_window(1000, 800, "Plotting Demo")

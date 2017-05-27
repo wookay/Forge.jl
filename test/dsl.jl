@@ -1,4 +1,4 @@
-using Forge.Smith
+using Forge.DSL
 using Base.Test
 
 @test isa(create_window, Function)

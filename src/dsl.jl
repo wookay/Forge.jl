@@ -1,4 +1,4 @@
-module Smith
+module DSL
 
 export create_window, show_window, setup_grid, save_framebuffer, isclosed
 export create_chart_2d, create_chart_3d
@@ -209,4 +209,4 @@ function update_color_buffer(histogram::Histogram, data::Array)
     Forge.fg_update_vertex_buffer(refcolorbuffer[], refcolorbuffersize[], Array{Cfloat}(data))
 end
 
-end # module Smith
+end # module DSL

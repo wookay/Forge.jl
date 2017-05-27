@@ -13,7 +13,6 @@ const FG_API_VERSION_CURRENT = 09
 include("libforge_h.jl")
 include("wrap.jl")
 
-# syntactic sugar
-include("smith.jl")
+include("dsl.jl")
 
 end # module
