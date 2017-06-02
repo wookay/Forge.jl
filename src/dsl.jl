@@ -1,6 +1,6 @@
 module DSL
 
-export create_window, show_window, setup_grid, save_framebuffer, isclosed
+export create_window, show_window, setup_grid, swap_window_buffers, save_framebuffer, isclosed
 export create_chart_2d, create_chart_3d
 # chart
 export set_axes_limits, set_axes_titles
@@ -61,6 +61,10 @@ function create_image(width::Real, height::Real, format::Forge.fg_channel_format
     refimage = Ref{Forge.fg_image}()
     Forge.fg_create_image(refimage[], width, height, format, dtype)
     Image(refimage)
+end
+
+function swap_window_buffers(window::Window)
+    Forge.fg_swap_window_buffers(window.ref[])
 end
 
 function save_framebuffer(window::Window, path::String)
@@ -131,16 +135,23 @@ function draw_chart(f::Function, window::Window, chart::Chart)
 end
 
 # set_color
+function (::Type{RGBA})(color::Unsigned)
+    RGBA(map(n -> (color >> n) & 0xFF / 255, (24, 16, 8, 0))...)
+end
+
+set_color(plot::Plot, color::Unsigned) = set_color(plot, RGBA(color))
 set_color(plot::Plot, color::RGB) = set_color(plot, convert(RGBA, color))
 function set_color(plot::Plot, color::RGBA)
     Forge.fg_set_plot_color(plot.ref[], Cfloat.([color.r, color.g, color.b, color.alpha])...)
 end
 
+set_color(field::VectorField, color::Unsigned) = set_color(field, RGBA(color))
 set_color(field::VectorField, color::RGB) = set_color(field, convert(RGBA, color))
 function set_color(field::VectorField, color::RGBA)
     Forge.fg_set_vector_field_color(field.ref[], Cfloat.([color.r, color.g, color.b, color.alpha])...)
 end
 
+set_color(histogram::Histogram, color::Unsigned) = set_color(histogram, RGBA(color))
 set_color(histogram::Histogram, color::RGB) = set_color(histogram, convert(RGBA, color))
 function set_color(histogram::Histogram, color::RGBA)
     Forge.fg_set_histogram_color(histogram.ref[], Cfloat.([color.r, color.g, color.b, color.alpha])...)

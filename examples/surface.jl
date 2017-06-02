@@ -19,10 +19,8 @@ surface = create_surface(chart, XSIZE, YSIZE)
 
 data = []
 for x in XMIN:DX:XMAX+DX, y in YMIN:DX:YMAX+DX
-    push!(data, x)
-    push!(data, y)
     z = sqrt(x*x + y*y) + 2.2204e-16
-    push!(data, sin(z)/z)
+    push!(data, x, y, sin(z)/z)
 end
 
 update_vertex_buffer(surface, data)
