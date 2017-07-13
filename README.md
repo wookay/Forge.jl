@@ -49,3 +49,25 @@ draw_chart(!isclosed, window, chart)
 
  [tsne.jl](examples/tsne.jl)
  <img src="examples/tsne.png" width="250" height="200" />
+
+
+### How to build
+
+* Get the package.
+```julia
+julia> Pkg.clone("https://github.com/wookay/Forge.jl.git")
+```
+
+* Optionally, edit the cmake options on `deps/build.jl` which is located at `Pkg.dir("Forge")`.
+```julia
+cmake_options = [
+    "-DCMAKE_INSTALL_PREFIX=$prefix",
+    "-DBUILD_EXAMPLES_CUDA=OFF",
+    "-DBUILD_EXAMPLES_OPENCL=OFF",
+]
+```
+
+* Build up.
+```julia
+julia> Pkg.build("Forge")
+```
